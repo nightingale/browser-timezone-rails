@@ -13,8 +13,6 @@ module BrowserTimezoneRails
 
     def set_time_zone(&action)
       # Use existing methods to simplify filter
-      puts "TIMEZONE HEADER: " + request.headers.env["HTTP_TIMEZONE"].to_s
-      puts "HEADERS: " + request.headers.env.keys.to_s
       Time.use_zone(browser_timezone.presence || request.headers.env["HTTP_TIMEZONE"] || Time.zone, &action)
     end
 
